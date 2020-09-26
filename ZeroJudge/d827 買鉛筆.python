@@ -1,4 +1,0 @@
-import sys
-for line in sys.stdin:
-  line=int(line)
-  print(int(line/12)*50+((line%12)*5))

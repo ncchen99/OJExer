@@ -4,16 +4,18 @@ import html
 from bs4 import BeautifulSoup
 import os
 
-userName = ""
-JSESSIONID = ""
-
+# 不能用＠＠
 headers = {
+    "Cookie": "PHPSESSID=70ef07cd82cdc340fe38620b3771a52f; _ga=GA1.2.507212688.1594865270; pma_lang=en; phpMyAdmin=c63b5d69cc2717fb3d2efb55bef40662; pmaUser-1=%7B%22iv%22%3A%22y8kRPLX3tw%5C%2FnJBwvpIP3Jw%3D%3D%22%2C%22mac%22%3A%2263b8495a13ec202c775d93d487c51a3da5960bbd%22%2C%22payload%22%3A%22boYXaQSFlY5Vw%2BnQJO4WEA%3D%3D%22%7D; csrftoken=rb4nyzSCvw5JBFlT3P4RIczkWNwAGw91nkpx1GdVVlck456GjTmcdAqfc9BrZCRz; sessionid=5iw4szl4fu5axsj0ra6wi9aaetsxue57",
+    "user-agent": "Chrome/84.0.4147.125",
+    "Upgrade-Insecure-Requests": "1",
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+    "Host": "whsh.site"
 }
 
 
 def getSubmissionPage(pageNum):
-    url = "https://zerojudge.tw/Submissions?page=" + \
-        str(pageNum) + "&&account="+userName
+    url = "http://whsh.site/status?myself=1&result=0&page=" + str(pageNum)
     r = requests.get(url, headers=headers)
     return r.text
 
@@ -47,11 +49,7 @@ def findAllACCodeSolutionId(soup):
     return SIdList
 
 
-def filterAllSubmissions(user, ID):
-    global userName, JSESSIONID, headers
-    userName, JSESSIONID = user, ID
-    headers = {"cookie": "JSESSIONID=" + JSESSIONID,
-               "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.125 Safari/537.36"}
+def filterAllSubmissions():
     pageNum = 1
     while True:
         solutionIds = findAllACCodeSolutionId(
@@ -65,7 +63,9 @@ def filterAllSubmissions(user, ID):
         pageNum += 1
 
 
-if __name__ != "__main__":
+if __name__ == "__main__":
+    print("ZeroJudge Code Downloader")
+else:
     if not os.path.exists("ZeroJudge"):
         os.makedirs("ZeroJudge")
-    print("...", end="")
+    filterAllSubmissions()

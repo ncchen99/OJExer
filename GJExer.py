@@ -52,7 +52,11 @@ def findAllACCodeSolutionId(soup, pageNum):
     return SIdList
 
 
-def filterAllSubmissions():
+def filterAllSubmissions(user, ID):
+    global userName, JSESSIONID, headers
+    userName, JSESSIONID = user, ID
+    headers = {"cookie": "JSESSIONID=" + JSESSIONID,
+               "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.125 Safari/537.36"}
     pageNum = 1
     while True:
         solutionIds = findAllACCodeSolutionId(
@@ -66,12 +70,7 @@ def filterAllSubmissions():
         pageNum += 1
 
 
-if __name__ == "__main__":
+if __name__ != "__main__":
     if not os.path.exists("GreenJudge"):
         os.makedirs("GreenJudge")
-    filterAllSubmissions()
-else:
-    print("ZeroJudge Code Downloader")
-
-
-# print(getSubmissionPage(1))
+    print("...", end="")

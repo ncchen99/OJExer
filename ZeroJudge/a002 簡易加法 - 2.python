@@ -1,4 +1,0 @@
-import sys
-for lines in sys.stdin:
-    a,b=lines.split()
-    print(int(a)+int(b))
