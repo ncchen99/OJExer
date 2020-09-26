@@ -1,5 +1,7 @@
 # OJ扣得輸出者 
 
+[![AppVeyor](https://ci.appveyor.com/api/projects/status/github/Ne0nd0g/merlin?branch=dev&svg=true)](https://ci.appveyor.com/project/Ne0nd0g/merlin)
+
 ```
    ____        __    ______   _  __    ______    ____ 
   / __ \      / /   / ____/  | |/ /   / ____/   / __ \ 
