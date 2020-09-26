@@ -1,0 +1,28 @@
+while True:
+    try:        
+        input()
+        student=list(map(int,input().split()))
+        #student=input().strip().split()
+        #for item in student:
+            #student[student.index(item)]=int(item)
+        student.sort()
+        print(student[0],end="")
+        for item in student[1:]:
+            print(" {}".format(item),end="")
+        print()
+        if student[0]>=60:
+            print("best case")
+        else:
+            for i in range(len(student),0,-1):
+                if student[i-1]<60:
+                    print(student[i-1])
+                    break
+        if student[len(student)-1]<60:
+            print("worst case")
+        else:
+            for item in student:
+                if item>=60:
+                    print(item)
+                    break
+    except:
+        break

@@ -1,0 +1,11 @@
+a = int(input())
+b = list(str(a))#按字符分割 x = list(y)
+sum = 0
+i = 0
+while i < len(b) :
+    if i % 2 == 0:
+        sum += int(b[i])
+    else:
+        sum -= int(b[i])
+    i = i + 1
+print(abs(sum))

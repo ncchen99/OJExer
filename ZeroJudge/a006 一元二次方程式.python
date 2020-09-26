@@ -1,0 +1,22 @@
+import sys
+import math
+for line in sys.stdin:
+  a,b,c = line.split()
+  a=float(a)
+  b=float(b)
+  c=float(c)
+  
+  
+  
+  if (b**2-(4*a*c))<0:
+    print("No real root")
+  elif (b**2-(4*a*c))==0:
+    root1 = (-1*b)/(2*a)
+    print("Two same roots x="+str(int(root1)))
+  else:
+    root1 = (-1*b+math.sqrt(b**2-(4*a*c)))/2*a
+    root2 = (-1*b-math.sqrt(b**2-(4*a*c)))/2*a
+    if root1>root2:
+      print("Two different roots x1="+str(int(root1))+' , x2='+str(int(root2)))
+    elif root1<root2:
+      print("Two different roots x1="+str(int(root2))+' , x2='+str(int(root1)))

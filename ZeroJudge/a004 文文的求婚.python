@@ -1,0 +1,8 @@
+import sys
+for line in sys.stdin:
+    if (int(line)%4==0) and (int(line)%100!=0) :
+        print("閏年")
+    elif int(line)%400==0:
+        print("閏年")
+    else :
+        print("平年")

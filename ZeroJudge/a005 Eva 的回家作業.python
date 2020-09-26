@@ -1,0 +1,9 @@
+import sys
+for input in sys.stdin:
+ if len(input.split()) > 3 :
+  a,b,c,d = input.split()
+  
+  if int(a)*int(d) == int(b)*int(c) :
+   print('%s %s %s %s %d' % (a,b,c,d,int(d)/int(c)*int(d)))
+  else :
+   print('%s %s %s %s %d' % (a,b,c,d,int(d)-int(c)+int(d)))

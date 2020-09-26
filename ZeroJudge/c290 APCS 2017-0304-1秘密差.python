@@ -1,0 +1,15 @@
+while True:
+    try:
+        inputstr=0
+        A=0 #奇位數和
+        B=0 #偶位數和
+        inputstr=input().strip()
+        for i in range(len(inputstr)):
+            #print(str(inputstr[i]))
+            if i%2==0: #奇
+                A+=int(inputstr[i])
+            else:
+                B+=int(inputstr[i])
+        print(str(abs(A-B)))
+    except:
+        break

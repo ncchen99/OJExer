@@ -1,0 +1,20 @@
+n = int(input())#好友個數
+num = list(map(int,input().split()))#好友編號
+ol = list()#是否追蹤過
+ans = 0
+
+for i in range(n):
+    ol.append(0)#未追蹤為0
+
+for i in range(n):
+    if ol[i] == 0:
+        if num[i] == i:#朋友是自己
+            ans = ans+1
+            ol[i]=1
+        else:
+            x = i
+            while ol[x] == 0:
+                 ol[x] = 1
+                 x = num[x]#循環成小群體
+            ans = ans+1
+print(ans)

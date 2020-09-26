@@ -1,0 +1,5 @@
+import sys
+for line in sys.stdin:
+  for i in range(len(line)):
+    print(chr(ord(line[i])-7),end="")
+  print('')

@@ -1,0 +1,7 @@
+import sys
+for line in sys.stdin:
+  list1=line.split()
+  for item in list1:
+    list1[list1.index(item)]=int(item)
+  list1.sort()
+  print(list1[2])

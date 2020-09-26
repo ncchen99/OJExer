@@ -1,0 +1,9 @@
+import sys
+listnum=[]
+for i in sys.stdin:
+  listnum.append(int(i.strip()))
+  listnum.sort()
+  if len(listnum)%2==0:
+    print(int((listnum[int(len(listnum)/2)]+listnum[int(len(listnum)/2)-1])/2))
+  else:
+    print(int(listnum[int(len(listnum)/2)]))
