@@ -14,37 +14,40 @@ headers = {
 
 
 def getSubmissionPage(pageNum):
-    url = "https://zerojudge.tw/Submissions?page=" + \
-        str(pageNum) + "&&account="+userName
+    url = "http://www.tcgs.tc.edu.tw:1218/RealtimeStatus?account=" + \
+        userName + "&page=" + str(pageNum)
     r = requests.get(url, headers=headers)
     return r.text
 
 
 def saveCode(SID):
     r = requests.get(
-        'https://zerojudge.tw/Solution.json?data=Code&solutionid=' + SID[0], headers=headers)
-    res = json.loads(r.text)
+        'http://www.tcgs.tc.edu.tw:1218/ShowCode?solutionid=' + SID[0], headers=headers)
+    r.encoding = 'utf8'
+    code = r.text[r.text.index(
+        "/********************************************"):r.text.index("</textarea>")]
     count = 2
-    fileName = "ZeroJudge/"+SID[1]+"."+res["language"]["suffix"]
+    fileName = "GreenJudge/"+SID[1]+".cpp"
     with open(fileName, "w+") as f:
-        f.write(html.unescape(res["code"]))
+        f.write(code)
 
 
-def findAllACCodeSolutionId(soup):
+def findAllACCodeSolutionId(soup, pageNum):
     SIdList = list()
     count = 2
-    if len(soup.find_all("tr")) == 2:
+    if not "RealtimeStatus?account=" + \
+            userName + "&amp;page=" + str(pageNum+1) in str(soup):
         return ["Finished"]
     for tr in soup.find_all("tr"):
-        if tr.has_attr("solutionid") and "AC" in tr.text:
+        if "AC" in tr.text:
             a = tr.find_all("td")[2].select("a")[0]
             if a["href"][-4:] in str(SIdList):
-                SIdList.append([tr["solutionid"], a["href"]
+                SIdList.append([tr.select("td")[0].string, a["href"]
                                 [-4:] + " " + a.text + " - " + str(count)])
                 count += 1
             else:
                 SIdList.append(
-                    [tr["solutionid"], a["href"][-4:] + " " + a.text])
+                    [tr.select("td")[0].string, a["href"][-4:] + " " + a.text])
                 count = 2
     return SIdList
 
@@ -53,7 +56,7 @@ def filterAllSubmissions():
     pageNum = 1
     while True:
         solutionIds = findAllACCodeSolutionId(
-            BeautifulSoup(getSubmissionPage(pageNum), 'html.parser'))
+            BeautifulSoup(getSubmissionPage(pageNum), 'html.parser'), pageNum)
         print(solutionIds)
         if "Finished" in solutionIds:
             print("Finished!")
@@ -64,8 +67,11 @@ def filterAllSubmissions():
 
 
 if __name__ == "__main__":
-    if not os.path.exists("ZeroJudge"):
-        os.makedirs("ZeroJudge")
+    if not os.path.exists("GreenJudge"):
+        os.makedirs("GreenJudge")
     filterAllSubmissions()
 else:
     print("ZeroJudge Code Downloader")
+
+
+# print(getSubmissionPage(1))
