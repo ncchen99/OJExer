@@ -25,5 +25,7 @@ userName = input("請輸入使用者名稱 : ")
 print()
 if choose == "1":
     ZJExer.filterAllSubmissions(userName, sessionId)
+    print("完成，存到 /ZeroJudge　惹")
 elif choose == "2":
     GJExer.filterAllSubmissions(userName, sessionId)
+    print("完成，存到 /ｇreenJudge　惹")
