@@ -26,16 +26,16 @@
 
 > ### 💊開啟Zerojudge並登入，進入使用者資訊頁面（User infomation），藍藍的那個超連結是**使用者名稱**。
 								
-![](https://i.imgur.com/BW2gYv7.png)
+![](https://i.imgur.com/UPwdIc0.png)
 
-> ### 🍭按下F12，選取Network欄位。
+> ### 🍭按下F12，選取Application欄位。 左側Storage => Cookies => zerojudge.tw 即可找到JSESSIONID。
 
+<!--
 ![](https://i.imgur.com/vijRTyZ.png)
-
 > ### 🚌按一下`F5`或`CTRL+R` 開始擷取，找到`zerojudge.tw`這個文件。
-
 ![](https://i.imgur.com/HvTg3T4.png)
 > ### 🎄拉開視窗，選取`Headers`往下拉找到`Request Headers` => `cookie` => `JSESSIONID`　複製等於後面**那駝東西**。
+-->
 
 ## 🙈GreenJudge也大同小異🐻
 
