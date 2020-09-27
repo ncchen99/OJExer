@@ -16,7 +16,7 @@
                2020/9/26 V0.0.1 Bug hen 多ㄛ💩
 ```
 + 目前只能下載ZeroJudge和GreenJudge的＠＠
-+ 這個東東原本是串電37th的教學[牧犬羊](https://github.com/nevikw39/ZeroJudge_Exporter)高一時的作品，code十分精簡，還有GUI，只是它有點年久失修故障惹，偶找不太到問題，只好重幹一個🥴，原本想要做包括TIOJ和QDUOJ也的，不過現在蠻累的要去捆惹，晚安安🐂
++ 這個東東原本是串電37th的教學[牧犬羊](https://github.com/nevikw39/ZeroJudge_Exporter)高一時的作品，code十分精簡，還有GUI，只是它有點年久失修故障惹，偶找不太到問題，只好重幹一個🥴，原本想要做包括TIOJ和QDUOJ的，不過現在蠻累的要去捆惹，晚安安🐂
 
 # 🍖教學
 
